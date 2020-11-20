@@ -13,7 +13,8 @@ namespace Car.Tests
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+			int i = 2;
+            Assert.Zero(i);
         }
     }
 }
