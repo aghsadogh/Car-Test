@@ -21,20 +21,15 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-    projects: '**/CarBackEnd/*.csproj'
-
-
-- task: DotNetCoreCLI@2
-  inputs:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-- task: PublishTestResults@2
+- task: DotNetCoreCLI@2
   inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+    command: 'build'
+    projects: '**/CarBackEnd/*.csproj'
+
 
 - task: DotNetCoreCLI@2
   inputs:
