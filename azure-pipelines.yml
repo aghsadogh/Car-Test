@@ -16,6 +16,20 @@ steps:
     feedsToUse: 'select'
 
 
+- task: StyleCop
+  inputs: 
+     # Required arguments
+     treatStyleCopViolationsErrorsAsWarnings: False
+     sourcefolder: $(build.SourcesDirectory)
+     maximumViolationCount: 1000
+     allowableViolationCount: 0
+     showOutput: False
+     cacheResults: False
+     forceFullAnalysis: True
+     loggingfolder: $(build.StagingDirectory)
+     summaryFileName: stylecopsummary.md
+     detailedSummary: False
+
 - script: dotnet test CarBackEnd/Car.Tests/Car.Tests.csproj  --logger trx
 - task: PublishTestResults@2
   condition: succeededOrFailed()
@@ -23,6 +37,8 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
 
+
+    
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
