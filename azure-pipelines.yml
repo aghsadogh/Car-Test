@@ -45,5 +45,5 @@ steps:
   inputs:
     azureSubscription: '718ffc95-88ba-4d3d-888d-0d651b475947'
     appName: 'softservecartest'
-    appType: webApp
-    package: $(System.DefaultWorkingDirectory)/**/*.zip  
+    appType: 'webApp'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip' 
