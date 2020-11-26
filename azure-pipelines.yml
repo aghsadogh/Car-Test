@@ -39,4 +39,11 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'myWebsiteName'
+    artifactName: 'CarBackEndTest'
+  
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '718ffc95-88ba-4d3d-888d-0d651b475947'
+    appName: 'softservecartest'
+    appType: webApp
+    package: $(System.DefaultWorkingDirectory)/**/*.zip  
