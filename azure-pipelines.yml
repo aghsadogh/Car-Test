@@ -22,7 +22,19 @@ steps:
     projects: 'CarBackEnd/Car.Tests/Car.Tests.csproj'
     publishTestResults: false
     
-
+- task: StyleCop@2
+  inputs: 
+     # Required arguments
+     treatStyleCopViolationsErrorsAsWarnings: False
+     sourcefolder: $(build.SourcesDirectory)
+     maximumViolationCount: 1000
+     allowableViolationCount: 0
+     showOutput: False
+     cacheResults: False
+     forceFullAnalysis: True
+     loggingfolder: $(build.StagingDirectory)
+     summaryFileName: stylecopsummary.md
+     detailedSummary: False
 
 - task: DotNetCoreCLI@2
   inputs:
